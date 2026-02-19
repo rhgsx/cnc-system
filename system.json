@@ -37,7 +37,7 @@
   "secondaryTokenAttribute": "stress.mental",
   "url": "https://github.com/rhgsx/cnc-system",
   "manifest": "https://github.com/rhgsx/cnc-system/releases/latest/download/system.json",
-  "download": "https://github.com/rhgsx/cnc-system/releases/latest/download/cnc-system.zip",
+  "download": "https://github.com/rhgsx/cnc-system/releases/latest/download/release1.zip",
   "license": "LICENSE",
   "readme": "README.md"
 }
