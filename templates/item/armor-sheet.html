@@ -1,0 +1,19 @@
+<form class="cnc armor-sheet" autocomplete="off">
+  <header><input name="name" type="text" value="{{item.name}}" /></header>
+  <div class="form-group">
+    <label>{{localize 'CNC.Armor.reduction'}}</label>
+    <input type="number" name="system.damageReduction.base" value="{{system.damageReduction.base}}" />
+  </div>
+  <div class="form-group">
+    <label>{{localize 'CNC.Armor.penalty'}}</label>
+    <input type="number" name="system.penalty" value="{{system.penalty}}" />
+  </div>
+  <div class="form-group">
+    <label>{{localize 'CNC.Weapon.weight'}}</label>
+    <input type="number" name="system.weight" value="{{system.weight}}" />
+  </div>
+  <div class="form-group">
+    <label>{{localize 'CNC.Item.description'}}</label>
+    <textarea name="system.description">{{system.description}}</textarea>
+  </div>
+</form>

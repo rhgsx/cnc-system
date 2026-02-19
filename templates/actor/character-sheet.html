@@ -1,0 +1,371 @@
+<form class="cnc character-sheet" autocomplete="off">
+  
+  <!-- Header -->
+  <header class="sheet-header">
+    <img class="portrait" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+    <div class="header-info">
+      <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'CNC.Name'}}" />
+      <div class="header-stats">
+        <div class="stress-bar physical">
+          <label>{{localize 'CNC.Stress.physical'}}</label>
+          <input type="number" name="system.stress.physical.value" 
+                 value="{{system.stress.physical.value}}" max="{{system.stress.physical.max}}" />
+          <span>/ {{system.stress.physical.max}}</span>
+        </div>
+        <div class="stress-bar mental">
+          <label>{{localize 'CNC.Stress.mental'}}</label>
+          <input type="number" name="system.stress.mental.value" 
+                 value="{{system.stress.mental.value}}" max="{{system.stress.mental.max}}" />
+          <span>/ {{system.stress.mental.max}}</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Tab Navigation -->
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="attributes">{{localize 'CNC.Tabs.attributes'}}</a>
+    <a class="item" data-tab="combat">{{localize 'CNC.Tabs.combat'}}</a>
+    <a class="item" data-tab="inventory">{{localize 'CNC.Tabs.inventory'}}</a>
+    <a class="item" data-tab="paths">{{localize 'CNC.Tabs.paths'}}</a>
+    <a class="item" data-tab="flaws">{{localize 'CNC.Tabs.flaws'}}</a>
+  </nav>
+
+  <!-- Tab Content -->
+  <section class="sheet-body">
+    
+    <!-- Attributes Tab -->
+    <div class="tab attributes" data-group="primary" data-tab="attributes">
+      
+      <!-- Attributes Grid -->
+      <div class="attributes-grid">
+        {{#each config.attributes as |attr key|}}
+        <div class="attribute-box" data-attribute="{{key}}">
+          <label>{{localize attr.label}}</label>
+          <div class="attribute-value">
+            <input type="number" name="system.attributes.{{key}}.value" 
+                   value="{{lookup (lookup ../system.attributes key) 'value'}}" min="1" max="6" />
+          </div>
+          <div class="attribute-total">{{lookup (lookup ../system.attributes key) 'total'}}</div>
+          <button type="button" class="roll-attribute" data-attribute="{{key}}">
+            <i class="fas fa-dice-d10"></i>
+          </button>
+        </div>
+        {{/each}}
+      </div>
+
+      <!-- Skills Section -->
+      <div class="skills-section">
+        <h3>{{localize 'CNC.Skills.label'}}</h3>
+        
+        {{#each skillGroups as |group groupKey|}}
+        <div class="skill-group" data-group="{{groupKey}}">
+          <h4>{{localize group.label}}</h4>
+          <div class="skills-list">
+            {{#each group.skills as |skillKey|}}
+            <div class="skill-row" data-skill="{{skillKey}}">
+              <label>{{localize (concat 'CNC.Skills.' skillKey)}}</label>
+              <input type="number" name="system.skills.{{skillKey}}.value" 
+                     value="{{lookup (lookup ../../system.skills skillKey) 'value'}}" min="0" max="7" />
+              <span class="skill-bonus">+{{lookup (lookup ../../system.skills skillKey) 'bonus'}}</span>
+              <button type="button" class="roll-skill" data-skill="{{skillKey}}">
+                <i class="fas fa-dice-d10"></i>
+              </button>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+        {{/each}}
+      </div>
+
+      <!-- Experience -->
+      <div class="experience-section">
+        <h3>{{localize 'CNC.XP.current'}}</h3>
+        <input type="number" name="system.experience.current" 
+               value="{{system.experience.current}}" />
+        <span>{{localize 'CNC.XP.spent'}}: {{system.experience.spent}}</span>
+      </div>
+    </div>
+
+    <!-- Combat Tab -->
+    <div class="tab combat" data-group="primary" data-tab="combat">
+      
+      <!-- Initiative -->
+      <div class="initiative-box">
+        <label>{{localize 'CNC.Combat.initiative'}}</label>
+        <span class="initiative-value">{{system.initiative.value}}</span>
+        <button type="button" class="roll-initiative">
+          <i class="fas fa-dice-d10"></i> {{localize 'CNC.Combat.rollInitiative'}}
+        </button>
+      </div>
+
+      <!-- Defense -->
+      <div class="defense-grid">
+        <div class="defense-box passive-dodge">
+          <label>{{localize 'CNC.Defense.passiveDodge'}}</label>
+          <span>{{system.defense.passiveDodge.value}}</span>
+        </div>
+        <div class="defense-box active-dodge {{#if system.defense.activeDodge.active}}active{{/if}}">
+          <label>{{localize 'CNC.Defense.activeDodge'}}</label>
+          <span>{{system.defense.activeDodge.value}}</span>
+          <button type="button" class="toggle-defense" data-type="dodge">
+            <i class="fas fa-shield-alt"></i>
+          </button>
+        </div>
+        <div class="defense-box passive-mental">
+          <label>{{localize 'CNC.Defense.passiveMental'}}</label>
+          <span>{{system.defense.passiveMental.value}}</span>
+        </div>
+        <div class="defense-box active-mental {{#if system.defense.activeMental.active}}active{{/if}}">
+          <label>{{localize 'CNC.Defense.activeMental'}}</label>
+          <span>{{system.defense.activeMental.value}}</span>
+          <button type="button" class="toggle-defense" data-type="mental">
+            <i class="fas fa-shield-alt"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Action Points -->
+      <div class="action-points">
+        <label>{{localize 'CNC.Combat.actionPoints'}}</label>
+        <input type="number" name="system.actionPoints.current" 
+               value="{{system.actionPoints.current}}" />
+        <span>/ {{system.actionPoints.max}}</span>
+        <button type="button" class="reset-ap">
+          <i class="fas fa-redo"></i>
+        </button>
+      </div>
+
+      <!-- Equipped Weapons -->
+      <div class="equipped-weapons">
+        <h3>{{localize 'CNC.Combat.weapons'}}</h3>
+        {{#each weapons as |weapon|}}
+        <div class="weapon-item" data-item-id="{{weapon.id}}">
+          <img src="{{weapon.img}}" />
+          <span class="name">{{weapon.name}}</span>
+          <span class="damage">{{weapon.system.damage.current}}</span>
+          <div class="weapon-controls">
+            <button type="button" class="attack-roll" data-item-id="{{weapon.id}}">
+              <i class="fas fa-dice-d10"></i>
+            </button>
+            <button type="button" class="item-edit" data-item-id="{{weapon.id}}">
+              <i class="fas fa-edit"></i>
+            </button>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+
+      <!-- Equipped Armor -->
+      <div class="equipped-armor">
+        <h3>{{localize 'CNC.Combat.armor'}}</h3>
+        {{#each armors as |armor|}}
+        <div class="armor-item" data-item-id="{{armor.id}}">
+          <img src="{{armor.img}}" />
+          <span class="name">{{armor.name}}</span>
+          <span class="reduction">{{armor.system.damageReduction.current}}</span>
+        </div>
+        {{/each}}
+      </div>
+
+      <!-- Rest Buttons -->
+      <div class="rest-buttons">
+        <button type="button" class="short-rest">
+          <i class="fas fa-campground"></i> {{localize 'CNC.Rest.short'}}
+        </button>
+        <button type="button" class="long-rest">
+          <i class="fas fa-bed"></i> {{localize 'CNC.Rest.long'}}
+        </button>
+      </div>
+    </div>
+
+    <!-- Inventory Tab -->
+    <div class="tab inventory" data-group="primary" data-tab="inventory">
+      
+      <!-- Loadout -->
+      <div class="loadout-header">
+        <div class="loadout-bar">
+          <label>{{localize 'CNC.Inventory.loadout'}}</label>
+          <div class="loadout-progress">
+            <div class="progress-fill" style="width: {{loadoutPercent}}%"></div>
+          </div>
+          <span class="loadout-values">{{system.loadout.used}} / {{system.loadout.capacity}}</span>
+        </div>
+        {{#if system.loadout.overloaded}}
+        <div class="overload-warning">
+          <i class="fas fa-exclamation-triangle"></i>
+          {{localize 'CNC.Inventory.overloaded'}}
+          (-{{system.loadout.overloadLevel}} {{localize 'CNC.Combat.actionPoints'}})
+        </div>
+        {{/if}}
+      </div>
+
+      <!-- Money -->
+      <div class="money-section">
+        <label>{{localize 'CNC.Inventory.money'}}</label>
+        <input type="number" name="system.money" value="{{system.money}}" />
+      </div>
+
+      <!-- Add Item Buttons -->
+      <div class="item-create-buttons">
+        <button type="button" class="item-create" data-type="weapon">
+          <i class="fas fa-sword"></i> {{localize 'CNC.ItemTypes.weapon'}}
+        </button>
+        <button type="button" class="item-create" data-type="armor">
+          <i class="fas fa-shield-alt"></i> {{localize 'CNC.ItemTypes.armor'}}
+        </button>
+        <button type="button" class="item-create" data-type="equipment">
+          <i class="fas fa-box"></i> {{localize 'CNC.ItemTypes.equipment'}}
+        </button>
+        <button type="button" class="item-create" data-type="consumable">
+          <i class="fas fa-flask"></i> {{localize 'CNC.ItemTypes.consumable'}}
+        </button>
+      </div>
+
+      <!-- Inventory List -->
+      <div class="inventory-list">
+        {{#each inventoryItems as |item|}}
+        <div class="inventory-item" data-item-id="{{item.id}}">
+          <img src="{{item.img}}" />
+          <span class="name">{{item.name}}</span>
+          <span class="weight">{{item.system.weight}}</span>
+          <div class="item-controls">
+            <button type="button" class="toggle-equipped" data-item-id="{{item.id}}">
+              <i class="fas fa-{{#if item.system.equipped}}check{{else}}times{{/if}}"></i>
+            </button>
+            <button type="button" class="item-edit" data-item-id="{{item.id}}">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button type="button" class="item-delete" data-item-id="{{item.id}}">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <!-- Paths Tab -->
+    <div class="tab paths" data-group="primary" data-tab="paths">
+      
+      <!-- Heritage -->
+      <div class="heritage-section">
+        <h3>{{localize 'CNC.Paths.heritage'}}</h3>
+        {{#if heritage}}
+        <div class="heritage-info">
+          <span class="heritage-name">{{heritage.name}}</span>
+          <span class="heritage-stage">{{localize 'CNC.Paths.stage'}} {{heritage.system.stage}}</span>
+        </div>
+        {{else}}
+        <button type="button" class="item-create" data-type="heritage">
+          <i class="fas fa-plus"></i> {{localize 'CNC.Paths.addHeritage'}}
+        </button>
+        {{/if}}
+      </div>
+
+      <!-- Paths -->
+      <div class="paths-list">
+        <h3>{{localize 'CNC.Paths.label'}}</h3>
+        <button type="button" class="item-create" data-type="path">
+          <i class="fas fa-plus"></i> {{localize 'CNC.Paths.addPath'}}
+        </button>
+        {{#each paths as |path|}}
+        <div class="path-item" data-item-id="{{path.id}}">
+          <span class="name">{{path.name}}</span>
+          <div class="item-controls">
+            <button type="button" class="item-edit" data-item-id="{{path.id}}">
+              <i class="fas fa-edit"></i>
+            </button>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+
+      <!-- Perks -->
+      <div class="perks-list">
+        <h3>{{localize 'CNC.Paths.perks'}}</h3>
+        <button type="button" class="item-create" data-type="perk">
+          <i class="fas fa-plus"></i> {{localize 'CNC.Paths.addPerk'}}
+        </button>
+        {{#each perks as |perk|}}
+        <div class="perk-item" data-item-id="{{perk.id}}">
+          <span class="name">{{perk.name}}</span>
+          <span class="level">{{localize 'CNC.PerkLevels.level'}} {{perk.system.level}}</span>
+          <div class="item-controls">
+            <button type="button" class="item-edit" data-item-id="{{perk.id}}">
+              <i class="fas fa-edit"></i>
+            </button>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+    <!-- Flaws Tab -->
+    <div class="tab flaws" data-group="primary" data-tab="flaws">
+      
+      <!-- Flaws -->
+      <div class="flaws-section">
+        <h3>{{localize 'CNC.Flaws.label'}}</h3>
+        <button type="button" class="item-create" data-type="flaw">
+          <i class="fas fa-plus"></i> {{localize 'CNC.Flaws.addFlaw'}}
+        </button>
+        {{#each flaws as |flaw|}}
+        <div class="flaw-item" data-item-id="{{flaw.id}}" data-type="{{flaw.system.flawType}}">
+          <span class="name">{{flaw.name}}</span>
+          <span class="type">{{flaw.system.flawType}}</span>
+          <span class="severity">{{flaw.system.severity}}</span>
+          <span class="xp">+{{flaw.system.xpValue}} XP</span>
+          <div class="item-controls">
+            <button type="button" class="item-edit" data-item-id="{{flaw.id}}">
+              <i class="fas fa-edit"></i>
+            </button>
+          </div>
+        </div>
+        {{/each}}
+        <div class="flaws-xp-total">
+          {{localize 'CNC.Flaws.totalXP'}}: {{flawsXpTotal}}
+        </div>
+      </div>
+
+      <!-- Strokes -->
+      <div class="strokes-section">
+        <h3>{{localize 'CNC.Strokes.label'}}</h3>
+        <div class="strokes-grid">
+          <div class="stroke-row">
+            <label>{{localize 'CNC.Strokes.orientation'}}</label>
+            <input type="text" name="system.strokes.orientation" 
+                   value="{{system.strokes.orientation}}" />
+          </div>
+          <div class="stroke-row">
+            <label>{{localize 'CNC.Strokes.politics'}}</label>
+            <input type="text" name="system.strokes.politics" 
+                   value="{{system.strokes.politics}}" />
+          </div>
+          <div class="stroke-row">
+            <label>{{localize 'CNC.Strokes.code'}}</label>
+            <input type="text" name="system.strokes.code" 
+                   value="{{system.strokes.code}}" />
+          </div>
+          <div class="stroke-row">
+            <label>{{localize 'CNC.Strokes.dream'}}</label>
+            <input type="text" name="system.strokes.dream" 
+                   value="{{system.strokes.dream}}" />
+          </div>
+          <div class="stroke-row">
+            <label>{{localize 'CNC.Strokes.temperament'}}</label>
+            <input type="text" name="system.strokes.temperament" 
+                   value="{{system.strokes.temperament}}" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Biography -->
+      <div class="biography-section">
+        <h3>{{localize 'CNC.Biography.label'}}</h3>
+        <textarea name="system.biography">{{system.biography}}</textarea>
+      </div>
+    </div>
+
+  </section>
+</form>

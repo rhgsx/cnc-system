@@ -1,0 +1,11 @@
+<div class="cnc damage-message">
+  <div class="damage-header">{{weapon.name}}</div>
+  <div class="damage-breakdown">
+    <span>{{localize 'CNC.Damage.base'}}: {{context.baseDamage}}</span>
+    {{#if context.exceed}}<span>+ {{context.exceed}}</span>{{/if}}
+    {{#if context.armorReduction}}<span>- {{context.armorReduction}} ({{localize 'CNC.Armor.label'}})</span>{{/if}}
+  </div>
+  <div class="damage-total">
+    {{localize 'CNC.Damage.total'}}: <strong>{{context.finalDamage}}</strong>
+  </div>
+</div>

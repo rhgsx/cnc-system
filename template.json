@@ -1,0 +1,198 @@
+{
+  "Actor": {
+    "types": ["character", "npc"],
+    "templates": {
+      "base": {
+        "biography": ""
+      },
+      "attributes": {
+        "attributes": {
+          "strength": {
+            "value": 1,
+            "bonus": 0
+          },
+          "agility": {
+            "value": 1,
+            "bonus": 0
+          },
+          "mind": {
+            "value": 1,
+            "bonus": 0
+          },
+          "will": {
+            "value": 1,
+            "bonus": 0
+          }
+        }
+      },
+      "skills": {
+        "skills": {
+          "athletics": { "value": 0, "bonus": 0, "attribute": "strength" },
+          "brawl": { "value": 0, "bonus": 0, "attribute": "strength" },
+          "intimidate": { "value": 0, "bonus": 0, "attribute": "strength" },
+          "melee": { "value": 0, "bonus": 0, "attribute": "strength" },
+          "resist": { "value": 0, "bonus": 0, "attribute": "strength" },
+          "throw": { "value": 0, "bonus": 0, "attribute": "strength" },
+          "drive": { "value": 0, "bonus": 0, "attribute": "agility" },
+          "firearms": { "value": 0, "bonus": 0, "attribute": "agility" },
+          "larceny": { "value": 0, "bonus": 0, "attribute": "agility" },
+          "ride": { "value": 0, "bonus": 0, "attribute": "agility" },
+          "stealth": { "value": 0, "bonus": 0, "attribute": "agility" },
+          "vigilance": { "value": 0, "bonus": 0, "attribute": "agility" },
+          "art": { "value": 0, "bonus": 0, "attribute": "mind" },
+          "craft": { "value": 0, "bonus": 0, "attribute": "mind" },
+          "knowledge": { "value": 0, "bonus": 0, "attribute": "mind" },
+          "medicine": { "value": 0, "bonus": 0, "attribute": "mind" },
+          "perception": { "value": 0, "bonus": 0, "attribute": "mind" },
+          "scholarship": { "value": 0, "bonus": 0, "attribute": "mind" },
+          "insight": { "value": 0, "bonus": 0, "attribute": "will" },
+          "leadership": { "value": 0, "bonus": 0, "attribute": "will" },
+          "performance": { "value": 0, "bonus": 0, "attribute": "will" },
+          "persuasion": { "value": 0, "bonus": 0, "attribute": "will" },
+          "streetwise": { "value": 0, "bonus": 0, "attribute": "will" },
+          "survival": { "value": 0, "bonus": 0, "attribute": "will" }
+        }
+      },
+      "stress": {
+        "stress": {
+          "physical": {
+            "value": 0,
+            "max": 5
+          },
+          "mental": {
+            "value": 0,
+            "max": 5
+          }
+        }
+      },
+      "combat": {
+        "defense": {
+          "passiveDodge": { "value": 0 },
+          "activeDodge": { "value": 0, "active": false },
+          "passiveMental": { "value": 0 },
+          "activeMental": { "value": 0, "active": false }
+        },
+        "actionPoints": {
+          "current": 3,
+          "max": 3
+        },
+        "initiative": {
+          "value": 0
+        }
+      },
+      "loadout": {
+        "loadout": {
+          "used": 0,
+          "capacity": 7
+        }
+      }
+    },
+    "character": {
+      "templates": ["base", "attributes", "skills", "stress", "combat", "loadout"],
+      "experience": {
+        "current": 0,
+        "spent": 0
+      },
+      "money": 0,
+      "strokes": {
+        "orientation": "",
+        "politics": "",
+        "code": "",
+        "dream": "",
+        "temperament": ""
+      }
+    },
+    "npc": {
+      "templates": ["base", "attributes", "skills", "stress", "combat"],
+      "threat": "normal",
+      "motivation": ""
+    }
+  },
+  "Item": {
+    "types": ["weapon", "armor", "shield", "tool", "consumable", "equipment", "heritage", "path", "perk", "flaw"],
+    "templates": {
+      "base": {
+        "description": "",
+        "weight": 0
+      },
+      "equippable": {
+        "equipped": false
+      }
+    },
+    "weapon": {
+      "templates": ["base", "equippable"],
+      "weaponType": "melee",
+      "weaponSize": "normal",
+      "damage": {
+        "base": 2,
+        "current": 2
+      },
+      "attackSkill": "melee",
+      "range": "close",
+      "magazine": {
+        "current": 0,
+        "max": 0
+      },
+      "tags": []
+    },
+    "armor": {
+      "templates": ["base", "equippable"],
+      "damageReduction": {
+        "base": 1,
+        "current": 1
+      },
+      "penalty": 0,
+      "tags": []
+    },
+    "shield": {
+      "templates": ["base", "equippable"],
+      "defenseBonus": 1,
+      "durability": {
+        "current": 3,
+        "max": 3
+      }
+    },
+    "tool": {
+      "templates": ["base"],
+      "skill": "",
+      "bonus": 0
+    },
+    "consumable": {
+      "templates": ["base"],
+      "quantity": 1,
+      "uses": {
+        "current": 1,
+        "max": 1
+      }
+    },
+    "equipment": {
+      "templates": ["base"],
+      "quantity": 1
+    },
+    "heritage": {
+      "templates": ["base"],
+      "stage": 0,
+      "ambition": "",
+      "improvements": []
+    },
+    "path": {
+      "templates": ["base"],
+      "source": "",
+      "tier": 1
+    },
+    "perk": {
+      "templates": ["base"],
+      "level": 1,
+      "path": "",
+      "isInitiation": false,
+      "xpCost": 5
+    },
+    "flaw": {
+      "templates": ["base"],
+      "flawType": "physical",
+      "severity": 1,
+      "xpValue": 10,
+      "canOvercome": true
+    }
+  }
+}

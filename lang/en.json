@@ -1,0 +1,125 @@
+{
+  "CNC": {
+    "Name": "Name",
+    "Tabs": {
+      "attributes": "Attributes",
+      "skills": "Skills",
+      "combat": "Combat",
+      "inventory": "Inventory",
+      "paths": "Paths",
+      "notes": "Notes"
+    },
+    "Attributes": {
+      "might": { "label": "Might", "abbr": "MGT" },
+      "finesse": { "label": "Finesse", "abbr": "FIN" },
+      "endurance": { "label": "Endurance", "abbr": "END" },
+      "intellect": { "label": "Intellect", "abbr": "INT" },
+      "presence": { "label": "Presence", "abbr": "PRS" },
+      "wits": { "label": "Wits", "abbr": "WIT" }
+    },
+    "Skills": {
+      "brawl": { "label": "Brawl", "attr": "might" },
+      "melee": { "label": "Melee", "attr": "might" },
+      "ranged": { "label": "Ranged", "attr": "finesse" },
+      "stealth": { "label": "Stealth", "attr": "finesse" },
+      "athletics": { "label": "Athletics", "attr": "endurance" },
+      "resistance": { "label": "Resistance", "attr": "endurance" },
+      "knowledge": { "label": "Knowledge", "attr": "intellect" },
+      "craft": { "label": "Craft", "attr": "intellect" },
+      "persuasion": { "label": "Persuasion", "attr": "presence" },
+      "intimidation": { "label": "Intimidation", "attr": "presence" },
+      "insight": { "label": "Insight", "attr": "wits" },
+      "perception": { "label": "Perception", "attr": "wits" }
+    },
+    "Stress": {
+      "physical": "Physical Stress",
+      "mental": "Mental Stress",
+      "max": "Maximum"
+    },
+    "Defense": {
+      "label": "Defense",
+      "evade": "Evade",
+      "block": "Block",
+      "armor": "Armor"
+    },
+    "Loadout": {
+      "label": "Loadout",
+      "max": "Max",
+      "current": "Current",
+      "overloaded": "Overloaded"
+    },
+    "ActionPoints": {
+      "label": "Action Points",
+      "current": "Current",
+      "max": "Maximum"
+    },
+    "Weapon": {
+      "type": "Weapon Type",
+      "size": "Size",
+      "damage": "Damage",
+      "skill": "Skill",
+      "range": "Range"
+    },
+    "WeaponTypes": {
+      "melee": "Melee",
+      "ranged": "Ranged"
+    },
+    "WeaponSizes": {
+      "light": "Light",
+      "normal": "Normal",
+      "heavy": "Heavy"
+    },
+    "Ranges": {
+      "close": "Close",
+      "medium": "Medium",
+      "long": "Long"
+    },
+    "Armor": {
+      "label": "Armor",
+      "reduction": "Damage Reduction",
+      "penalty": "Penalty"
+    },
+    "Damage": {
+      "base": "Base Damage",
+      "total": "Total Damage"
+    },
+    "Roll": {
+      "critical": "Critical Success!",
+      "fumble": "Fumble!",
+      "success": "Success",
+      "failure": "Failure"
+    },
+    "NPC": {
+      "threat": "Threat Level",
+      "motivation": "Motivation"
+    },
+    "Item": {
+      "description": "Description",
+      "quantity": "Quantity",
+      "weight": "Weight"
+    },
+    "Heritage": {
+      "label": "Heritage",
+      "ability": "Heritage Ability"
+    },
+    "Path": {
+      "label": "Path",
+      "ability": "Path Ability",
+      "mark": "Mark"
+    },
+    "Flaw": {
+      "label": "Flaw"
+    },
+    "ThreatLevels": {
+      "minion": "Minion",
+      "normal": "Normal",
+      "elite": "Elite",
+      "boss": "Boss"
+    },
+    "Rest": {
+      "short": "Short Rest",
+      "long": "Long Rest",
+      "recovery": "Recovery"
+    }
+  }
+}

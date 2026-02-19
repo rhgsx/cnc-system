@@ -1,0 +1,43 @@
+{
+  "id": "cnc-system",
+  "title": "Core & Cold System",
+  "description": "Система Core & Cold для Foundry VTT",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "authors": [
+    {
+      "name": "rhgsx",
+      "url": "https://github.com/rhgsx"
+    }
+  ],
+  "esmodules": ["module/cnc-system.js"],
+  "styles": ["styles/cnc.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "ru",
+      "name": "Russian",
+      "path": "lang/ru.json"
+    }
+  ],
+  "packs": [],
+  "packFolders": [],
+  "socket": false,
+  "initiative": "2d10 + @attributes.wits.value + @attributes.finesse.value",
+  "gridDistance": 1,
+  "gridUnits": "m",
+  "primaryTokenAttribute": "stress.physical",
+  "secondaryTokenAttribute": "stress.mental",
+  "url": "https://github.com/rhgsx/cnc-system",
+  "manifest": "https://github.com/rhgsx/cnc-system/releases/latest/download/system.json",
+  "download": "https://github.com/rhgsx/cnc-system/releases/latest/download/cnc-system.zip",
+  "license": "LICENSE",
+  "readme": "README.md"
+}

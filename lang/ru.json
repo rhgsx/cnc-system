@@ -1,0 +1,125 @@
+{
+  "CNC": {
+    "Name": "Имя",
+    "Tabs": {
+      "attributes": "Характеристики",
+      "skills": "Навыки",
+      "combat": "Бой",
+      "inventory": "Инвентарь",
+      "paths": "Пути",
+      "notes": "Заметки"
+    },
+    "Attributes": {
+      "might": { "label": "Мощь", "abbr": "МОЩ" },
+      "finesse": { "label": "Ловкость", "abbr": "ЛОВ" },
+      "endurance": { "label": "Выносливость", "abbr": "ВЫН" },
+      "intellect": { "label": "Интеллект", "abbr": "ИНТ" },
+      "presence": { "label": "Присутствие", "abbr": "ПРИ" },
+      "wits": { "label": "Находчивость", "abbr": "НАХ" }
+    },
+    "Skills": {
+      "brawl": { "label": "Драка", "attr": "might" },
+      "melee": { "label": "Рукопашный бой", "attr": "might" },
+      "ranged": { "label": "Стрельба", "attr": "finesse" },
+      "stealth": { "label": "Скрытность", "attr": "finesse" },
+      "athletics": { "label": "Атлетика", "attr": "endurance" },
+      "resistance": { "label": "Сопротивление", "attr": "endurance" },
+      "knowledge": { "label": "Знания", "attr": "intellect" },
+      "craft": { "label": "Ремесло", "attr": "intellect" },
+      "persuasion": { "label": "Убеждение", "attr": "presence" },
+      "intimidation": { "label": "Запугивание", "attr": "presence" },
+      "insight": { "label": "Проницательность", "attr": "wits" },
+      "perception": { "label": "Восприятие", "attr": "wits" }
+    },
+    "Stress": {
+      "physical": "Физический стресс",
+      "mental": "Ментальный стресс",
+      "max": "Максимум"
+    },
+    "Defense": {
+      "label": "Защита",
+      "evade": "Уклонение",
+      "block": "Блок",
+      "armor": "Броня"
+    },
+    "Loadout": {
+      "label": "Снаряжение",
+      "max": "Макс",
+      "current": "Текущий",
+      "overloaded": "Перегружен"
+    },
+    "ActionPoints": {
+      "label": "Очки действий",
+      "current": "Текущие",
+      "max": "Максимум"
+    },
+    "Weapon": {
+      "type": "Тип оружия",
+      "size": "Размер",
+      "damage": "Урон",
+      "skill": "Навык",
+      "range": "Дальность"
+    },
+    "WeaponTypes": {
+      "melee": "Ближний бой",
+      "ranged": "Дальний бой"
+    },
+    "WeaponSizes": {
+      "light": "Лёгкое",
+      "normal": "Обычное",
+      "heavy": "Тяжёлое"
+    },
+    "Ranges": {
+      "close": "Близкая",
+      "medium": "Средняя",
+      "long": "Дальняя"
+    },
+    "Armor": {
+      "label": "Броня",
+      "reduction": "Снижение урона",
+      "penalty": "Штраф"
+    },
+    "Damage": {
+      "base": "Базовый урон",
+      "total": "Итого урон"
+    },
+    "Roll": {
+      "critical": "Критический успех!",
+      "fumble": "Провал!",
+      "success": "Успех",
+      "failure": "Неудача"
+    },
+    "NPC": {
+      "threat": "Угроза",
+      "motivation": "Мотивация"
+    },
+    "Item": {
+      "description": "Описание",
+      "quantity": "Количество",
+      "weight": "Вес"
+    },
+    "Heritage": {
+      "label": "Наследие",
+      "ability": "Способность наследия"
+    },
+    "Path": {
+      "label": "Путь",
+      "ability": "Способность пути",
+      "mark": "Отметка"
+    },
+    "Flaw": {
+      "label": "Недостаток"
+    },
+    "ThreatLevels": {
+      "minion": "Миньон",
+      "normal": "Обычный",
+      "elite": "Элита",
+      "boss": "Босс"
+    },
+    "Rest": {
+      "short": "Короткий отдых",
+      "long": "Длинный отдых",
+      "recovery": "Восстановление"
+    }
+  }
+}

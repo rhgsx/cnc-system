@@ -1,0 +1,46 @@
+<form class="cnc weapon-sheet" autocomplete="off">
+  <header><input name="name" type="text" value="{{item.name}}" /></header>
+  <div class="form-group">
+    <label>{{localize 'CNC.Weapon.type'}}</label>
+    <select name="system.weaponType">
+      <option value="melee" {{selected system.weaponType 'melee'}}>{{localize 'CNC.WeaponTypes.melee'}}</option>
+      <option value="ranged" {{selected system.weaponType 'ranged'}}>{{localize 'CNC.WeaponTypes.ranged'}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>{{localize 'CNC.Weapon.size'}}</label>
+    <select name="system.weaponSize">
+      <option value="light" {{selected system.weaponSize 'light'}}>{{localize 'CNC.WeaponSizes.light'}}</option>
+      <option value="normal" {{selected system.weaponSize 'normal'}}>{{localize 'CNC.WeaponSizes.normal'}}</option>
+      <option value="heavy" {{selected system.weaponSize 'heavy'}}>{{localize 'CNC.WeaponSizes.heavy'}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>{{localize 'CNC.Weapon.damage'}}</label>
+    <input type="number" name="system.damage.base" value="{{system.damage.base}}" />
+  </div>
+  <div class="form-group">
+    <label>{{localize 'CNC.Weapon.skill'}}</label>
+    <select name="system.attackSkill">
+      {{#each config.skills as |skill key|}}
+      <option value="{{key}}" {{selected ../system.attackSkill key}}>{{localize skill.label}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div class="form-group">
+    <label>{{localize 'CNC.Weapon.range'}}</label>
+    <select name="system.range">
+      <option value="close" {{selected system.range 'close'}}>{{localize 'CNC.Ranges.close'}}</option>
+      <option value="medium" {{selected system.range 'medium'}}>{{localize 'CNC.Ranges.medium'}}</option>
+      <option value="long" {{selected system.range 'long'}}>{{localize 'CNC.Ranges.long'}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>{{localize 'CNC.Weapon.weight'}}</label>
+    <input type="number" name="system.weight" value="{{system.weight}}" />
+  </div>
+  <div class="form-group">
+    <label>{{localize 'CNC.Item.description'}}</label>
+    <textarea name="system.description">{{system.description}}</textarea>
+  </div>
+</form>

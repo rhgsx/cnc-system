@@ -1,0 +1,43 @@
+<form class="cnc npc-sheet" autocomplete="off">
+  <header class="sheet-header">
+    <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+    <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'CNC.Name'}}" />
+  </header>
+
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="attributes">{{localize 'CNC.Tabs.attributes'}}</a>
+    <a class="item" data-tab="notes">{{localize 'CNC.Tabs.notes'}}</a>
+  </nav>
+
+  <section class="sheet-body">
+    <div class="tab attributes" data-group="primary" data-tab="attributes">
+      <div class="threat-select">
+        <label>{{localize 'CNC.NPC.threat'}}</label>
+        <select name="system.threat">
+          {{selectOptions config.threatLevels selected=system.threat localize=true}}
+        </select>
+      </div>
+      <div class="attributes-grid">
+        {{#each config.attributes as |attr key|}}
+        <div class="attribute-box" data-attribute="{{key}}">
+          <label>{{localize attr.label}}</label>
+          <input type="number" name="system.attributes.{{key}}.value" 
+                 value="{{lookup (lookup ../system.attributes key) 'value'}}" min="1" max="6" />
+          <button type="button" class="roll-attribute"><i class="fas fa-dice-d10"></i></button>
+        </div>
+        {{/each}}
+      </div>
+      <div class="stress-row">
+        <label>{{localize 'CNC.Stress.physical'}}:</label>
+        <input type="number" name="system.stress.physical.value" value="{{system.stress.physical.value}}" />
+        <label>{{localize 'CNC.Stress.mental'}}:</label>
+        <input type="number" name="system.stress.mental.value" value="{{system.stress.mental.value}}" />
+      </div>
+    </div>
+    <div class="tab notes" data-group="primary" data-tab="notes">
+      <label>{{localize 'CNC.NPC.motivation'}}</label>
+      <input type="text" name="system.motivation" value="{{system.motivation}}" />
+      <textarea name="system.biography">{{system.biography}}</textarea>
+    </div>
+  </section>
+</form>

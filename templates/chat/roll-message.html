@@ -1,0 +1,10 @@
+<div class="cnc roll-message">
+  <div class="roll-header">
+    <span class="roll-label">{{context.label}}</span>
+    {{#if context.isCritical}}<span class="critical">{{localize 'CNC.Roll.critical'}}</span>{{/if}}
+    {{#if context.isFumble}}<span class="fumble">{{localize 'CNC.Roll.fumble'}}</span>{{/if}}
+  </div>
+  <div class="roll-result">
+    <span class="total">{{roll.total}}</span>
+  </div>
+</div>
